@@ -27,8 +27,8 @@ void setup() {
 void loop() {
   int raw = photodiode.readRaw();
   float voltage = photodiode.readVoltage();
-
   int16_t ax, ay, az;
+
   mpu.getAcceleration(&ax, &ay, &az);
 
   Serial.printf("Raw: %d\tVoltage: %.2f V\n", raw, voltage);
