@@ -14,7 +14,7 @@ bool MPU6050::testConnection() {
 }
 
 void MPU6050::getAcceleration(int16_t* ax, int16_t* ay, int16_t* az) {
-    Wire.beginTransmission    del ".git\.COMMIT_EDITMSG.swp"    del ".git\.COMMIT_EDITMSG.swp"(0x68);
+    Wire.beginTransmission 
     Wire.write(0x3B);              // Starting register for Accel data
     Wire.endTransmission(false);
     Wire.requestFrom(0x68, 6, true);
