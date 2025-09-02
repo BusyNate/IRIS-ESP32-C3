@@ -14,10 +14,10 @@ bool MPU6050::testConnection() {
 }
 
 void MPU6050::getAcceleration(int16_t* ax, int16_t* ay, int16_t* az) {
-    Wire.beginTransmission 
-    Wire.write(0x3B);              // Starting register for Accel data
-    Wire.endTransmission(false);
-    Wire.requestFrom(0x68, 6, true);
+    Wire.beginTransmission(0x68); 
+    Wire.write(0x3B); // Starting register for Accel data
+    Wire.endTransmission();
+    Wire.requestFrom((uint8_t)0x68, (size_t)6, (bool)true);
 
     if (Wire.available() == 6) {   //  Ensure we got data (no nulls)
         *ax = (Wire.read() << 8) | Wire.read();
