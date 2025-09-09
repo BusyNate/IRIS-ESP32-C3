@@ -6,6 +6,8 @@ static const char* UART_SVC = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"; // Nordic 
 static const char* UUID_RX  = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"; // RX (Write)
 static const char* UUID_TX  = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"; // TX (Notify)
 
+BluetoothManager::BluetoothManager() {}
+
 namespace {
   NimBLEServer* server = nullptr;
   NimBLECharacteristic* tx = nullptr;
@@ -13,10 +15,10 @@ namespace {
   volatile bool connected = false;
 
   struct SrvCb : NimBLEServerCallbacks {
-    void onConnect(NimBLEServer* /*pServer*/) override {
+    void onConnect(NimBLEServer* /pServer/) override {
       connected = true;
     }
-    void onDisconnect(NimBLEServer* /*pServer*/) override {
+    void onDisconnect(NimBLEServer* /pServer/) override {
       connected = false;
       NimBLEDevice::startAdvertising();
     }
@@ -33,9 +35,8 @@ namespace {
   };
 }
 
-BluetoothManager::BluetoothManager() {}
 
-void BluetoothManager::begin(const char* name) {
+void BluetoothManager::begin(const char* name) { 
   NimBLEDevice::init(name);
   server = NimBLEDevice::createServer();
   server->setCallbacks(new SrvCb());
@@ -68,4 +69,3 @@ String BluetoothManager::receive() {
   rxBuf = "";
   return out;
 }
-

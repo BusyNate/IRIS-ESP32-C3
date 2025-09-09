@@ -38,8 +38,8 @@ void loop() {
 
     // ✅ Skip null data (all zeros usually means bad read)
     if (!(ax == 0 && ay == 0 && az == 0)) {
+      
       unsigned long ts = millis();
-
       // --- Normal debug prints ---
       Serial.printf("Raw: %d\tVoltage: %.2f V\n", raw, voltage);
       Serial.printf("AX:%d,AY:%d,AZ:%d\n", ax, ay, az);
@@ -52,7 +52,7 @@ void loop() {
       Serial.println(az); // newline ends the CSV row
 
       // --- Send same data over Bluetooth ---
-      String sensorData = "Raw:" + String(raw) + 
+      String sensorData = "Time" + String(ts) + 
                           "\tVoltage:" + String(voltage) + "V\t" +
                           "AX:" + String(ax) + ",AY:" + String(ay) + ",AZ:" + String(az);
       bt.send(sensorData);
