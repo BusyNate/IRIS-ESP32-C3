@@ -15,3 +15,11 @@ void setup() {
 void loop() {
     // not used in tests
 }
+void time_test(){
+    for (int i = 0; i < 20; i++){
+        unsigned long timestamp = millis();
+        std::cout << "Timestamp" << timestamp << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+
+}
