@@ -3,8 +3,8 @@
 #include "bluetooth.h"
 
 static const char* UART_SVC = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"; // Nordic UART Service UUID
-static const char* UUID_RX  = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"; // RX (Write)
-static const char* UUID_TX  = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"; // TX (Notify)
+static const char* UUID_RX = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"; // RX (Write)
+static const char* UUID_TX = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"; // TX (Notify)
 
 BluetoothManager::BluetoothManager() {}
 
@@ -15,10 +15,10 @@ namespace {
   volatile bool connected = false;
 
   struct SrvCb : NimBLEServerCallbacks {
-    void onConnect(NimBLEServer* /pServer/) override {
+    void onConnect(NimBLEServer* pServer) override {
       connected = true;
     }
-    void onDisconnect(NimBLEServer* /pServer/) override {
+    void onDisconnect(NimBLEServer* pServer) override {
       connected = false;
       NimBLEDevice::startAdvertising();
     }
