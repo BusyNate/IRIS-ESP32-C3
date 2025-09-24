@@ -10,7 +10,7 @@ MPU6050 mpu;
 
 void setup() {
   Serial.begin(115200);
-
+  Serial.println("Anti-Sleep Glasses Starting...");
   irLED.begin();
   irLED.setDutyPercent(50);
   photodiode.begin();
@@ -69,5 +69,5 @@ void loop() {
     Serial.println(received);
   }
 
-  delay(200); // sampling rate
+  delay(1200); // sampling rate
 }
