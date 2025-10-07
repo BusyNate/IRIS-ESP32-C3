@@ -69,5 +69,5 @@ void loop() {
     Serial.println(received);
   }
 
-  delay(1200); // sampling rate
+  delay(100); // sampling rate
 }
